@@ -1,0 +1,4 @@
+discord.py==1.7.3
+discord_py_slash_command==2.3.0
+discord==1.7.3
+TenGiphPy==2.5.0
