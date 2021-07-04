@@ -28,6 +28,13 @@ class GifCog(commands.Cog):
         else:
             await ctx.send(self.tenor.random(tag=self.gifJSON['aunty']))
 
+    @commands.command(
+        name="miku",
+        brief="Post Miku gif"
+    )
+    async def _miku(self, ctx):
+        await ctx.send(self.tenor.random(tag=self.gifJSON['miku']))
+
 
 def setup(bot):
     bot.add_cog(GifCog(bot))
