@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import User
 import random
 
 
@@ -17,6 +18,13 @@ class CoreCog(commands.Cog):
         message = ctx.message.content.replace(
             ctx.prefix + ctx.invoked_with + " ", "")
         await ctx.send(spongemock(message))
+
+    @commands.command(name="slap", brief="Slap someone with a fish-based entity")
+    async def _slap(self, ctx, user: User):
+        if (user is self.bot.user):
+            await ctx.send(self.bot.user.mention + " slaps " + ctx.message.author.mention + " about a bit with a large trout instead.")
+        else:
+            await ctx.send(ctx.message.author.mention + " slaps " + user.mention + " about a bit with a large trout.")
 
 
 def spongemock(input_text):
