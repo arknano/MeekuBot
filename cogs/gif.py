@@ -36,6 +36,13 @@ class GifCog(commands.Cog):
     async def _miku(self, ctx):
         await ctx.send(tenor_random_gif(self, self.gifJSON['miku']))
 
+    @commands.command(
+        name="monch",
+        brief="do a hemckin big monch"
+    )
+    async def _monch(self, ctx):
+        await ctx.send(self.gifJSON['monch'])
+
 
 def tenor_random_gif(self, tag):
     request_string = "https://api.tenor.co/v1/random?q=\"{tag}\"&key={key}&limit=50&contentfilter=low"
