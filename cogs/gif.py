@@ -59,10 +59,7 @@ async def feature_complete(self, message):
 def tenor_random_gif(self, tag):
     request_string = "https://api.tenor.co/v1/random?q=\"{tag}\"&key={key}&limit=50&contentfilter=low"
     response = requests.get(request_string.format(key=self.tenor_key, tag=tag))
-    print(request_string.format(key=self.tenor_key, tag=tag))
-    print(response)
     results = json.loads(response.text)
-    print(results)
     random_entry = random.choice(results['results'])
     gif = random_entry['media'][0]['gif']['url']
     return gif
