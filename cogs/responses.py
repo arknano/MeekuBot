@@ -17,6 +17,7 @@ class ResponsesCog(commands.Cog):
             return
         await naughtyMock(self, message)
         await funResponses(self, message)
+        await react(self, message)
 
 
 async def naughtyMock(self, message):
@@ -36,6 +37,14 @@ async def funResponses(self, message):
                 if (self.responses[entry]['chance'] > random.random()):
                     await message.channel.send(random.choice(self.responses[entry]['responses']))
                     break
+
+
+async def react(self, message):
+    if random.random() > 0.95:
+        emoji = random.choice(self.bot.emojis)
+        await message.add_reaction(emoji=emoji)
+
+
 
 def setup(bot):
     bot.add_cog(ResponsesCog(bot))
