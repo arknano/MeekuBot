@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-import TenGiphPy
 import json
 import random
 

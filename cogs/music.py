@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import requests
 
+
 # Barely functional, no missing entry checks. mothballed
 
 
@@ -23,14 +24,14 @@ class MusicCog(commands.Cog):
         embed.set_author(name=ctx.message.author.name,
                          icon_url=ctx.message.author.avatar_url)
         embed.set_footer(text="Powered by song.link")
-        spoftyLink = "[Spotify](" + \
-            json["linksByPlatform"]["spotify"]["url"] + ")"
-        appleLink = "[Apple Music](" + \
-            json["linksByPlatform"]["appleMusic"]["url"] + ")"
-        ytMusicLink = "[YouTube Music](" + \
-            json["linksByPlatform"]["youtubeMusic"]["url"] + ")"
-        embed.add_field(name="Links", value=spoftyLink + " | " +
-                        appleLink + " | " + ytMusicLink)
+        spofty_link = "[Spotify](" + \
+                      json["linksByPlatform"]["spotify"]["url"] + ")"
+        apple_link = "[Apple Music](" + \
+                     json["linksByPlatform"]["appleMusic"]["url"] + ")"
+        yt_music_link = "[YouTube Music](" + \
+                        json["linksByPlatform"]["youtubeMusic"]["url"] + ")"
+        embed.add_field(name="Links", value=spofty_link + " | " +
+                                            apple_link + " | " + yt_music_link)
         await ctx.send(embed=embed)
         await ctx.send(json["linksByPlatform"]["youtube"]["url"])
         await self.bot.delete_message(ctx.message)

@@ -1,9 +1,7 @@
 # import discord
 from discord.ext import commands
-from discord_slash import SlashCommand
 import discord
 import json
-
 
 f = open('token.json')
 token = json.load(f)
@@ -17,7 +15,6 @@ def get_prefix(bot, message):
 bot = commands.Bot(command_prefix=get_prefix,
                    intents=discord.Intents.default(), case_insensitive=True)
 
-
 initial_extensions = ['cogs.core', 'cogs.responses',
                       'cogs.gif', 'cogs.decide']
 
@@ -30,7 +27,8 @@ if __name__ == '__main__':
 async def on_ready():
     print("Ready!")
 
-#slash = SlashCommand(bot, sync_commands=True)
+
+# slash = SlashCommand(bot, sync_commands=True)
 # guild_ids = [819745580309413919]  # Put your server ID in this array.
 # @slash.slash(
 #     name="saybanany",
