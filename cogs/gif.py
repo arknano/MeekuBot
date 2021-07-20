@@ -43,6 +43,18 @@ class GifCog(commands.Cog):
     async def _monch(self, ctx):
         await ctx.send(self.gifJSON['monch'])
 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if message.author == self.bot.user:
+            return
+        await  feature_complete(self, message)
+
+
+async def feature_complete(self, message):
+    key = "feature complete"
+    if message.content.lower() == key.lower():
+        await message.channel.send(self.gifJSON['featurecomplete'])
+
 
 def tenor_random_gif(self, tag):
     request_string = "https://api.tenor.co/v1/random?q=\"{tag}\"&key={key}&limit=50&contentfilter=low"
