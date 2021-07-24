@@ -1,6 +1,9 @@
+import sys
+from datetime import datetime
 from discord.ext import commands
 import json
 import typing
+import os
 
 
 class AdminCog(commands.Cog):
@@ -15,7 +18,7 @@ class AdminCog(commands.Cog):
         f = open('config/responses.json')
         self.responses = json.load(f)
 
-    @commands.command(name="config", brief="Modify Meeku's attitude (admin only)")
+    @commands.command(name="config", hidden=True)
     async def _config(self, ctx, mode, key, value: typing.Union[bool, int, float, str] = "NULL"):
         if ctx.author.id == self.adminID:
             # config.json
@@ -96,6 +99,21 @@ class AdminCog(commands.Cog):
             else:
                 await ctx.send("Ok, reloaded " + module + "!")
 
+    @commands.command(name="restart", hidden=True)
+    async def _restart(self, ctx):
+        if ctx.author.id == self.adminID:
+            await ctx.send("Ok, brb!")
+            # if sys.platform.startswith('linux'):
+            #     os.system("clear")
+            # else:
+            #     os.system("cls")
+            print("Restart command recieved at " + datetime.now().strftime("%H:%M:%S"))
+            if self.config['serverMode']:
+                os.execl(sys.executable, "python3.9" + " meeku.py")
+            else:
+                os.execl(sys.executable, "python" + " meeku.py")
+        else:
+            await ctx.send("No!")
 
 def setup(bot):
     bot.add_cog(AdminCog(bot))

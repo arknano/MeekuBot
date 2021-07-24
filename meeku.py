@@ -33,8 +33,9 @@ async def on_ready():
     else:
         game = discord.Game(config['playingStatus'])
         await bot.change_presence(status=discord.Status.online, activity=game)
-
-    print("Ready!")
+    channel = bot.get_channel(860458606641807370)
+    await channel.send("Meeku\'s here!")
+    print("Ready! Started at " + datetime.now().strftime("%H:%M:%S"))
 
 
 # slash = SlashCommand(bot, sync_commands=True)
