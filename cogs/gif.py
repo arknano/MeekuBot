@@ -19,29 +19,22 @@ class GifCog(commands.Cog):
         name="aunty",
         brief="Post Aunty Donna gif"
     )
-    async def _aunty(self, ctx, *, arg="a"):
-        if arg.lower() == "broden":
-            await ctx.send(tenor_random_gif(self, self.gifJSON['broden']))
-        elif arg.lower() == "mark":
-            await ctx.send(tenor_random_gif(self, self.gifJSON['mark']))
-        elif arg.lower() == "zach":
-            await ctx.send(tenor_random_gif(self, self.gifJSON['zach']))
-        else:
-            await ctx.send(tenor_random_gif(self, self.gifJSON['aunty']))
+    async def _aunty(self, ctx, *, arg=""):
+        await ctx.send(tenor_random_gif(self, self.gifJSON['aunty'] + str(arg)))
 
     @commands.command(
         name="miku",
         brief="Post Miku gif"
     )
-    async def _miku(self, ctx):
-        await ctx.send(tenor_random_gif(self, self.gifJSON['miku']))
+    async def _miku(self, ctx, *, arg=""):
+        await ctx.send(tenor_random_gif(self, self.gifJSON['miku'] + str(arg)))
 
     @commands.command(
         name="monch",
         brief="do a hemckin big monch"
     )
     async def _monch(self, ctx):
-        await ctx.send(self.gifJSON['monch'])
+        await ctx.send(self.gifJSON['monch'] )
 
     @commands.Cog.listener()
     async def on_message(self, message):
