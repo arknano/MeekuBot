@@ -1,4 +1,3 @@
-# import discord
 from discord.ext import commands
 import discord
 import json
@@ -6,6 +5,8 @@ from datetime import datetime
 
 f = open('config/token.json')
 token = json.load(f)
+f = open('config/config.json')
+config = json.load(f)
 
 
 def get_prefix(bot, message):
@@ -26,8 +27,13 @@ if __name__ == '__main__':
 
 @bot.event
 async def on_ready():
-    game = discord.Game("in dev mode with Graf. Last restart: " + datetime.now().strftime("%H:%M:%S"))
-    await bot.change_presence(status=discord.Status.dnd, activity=game)
+    if config['devMode']:
+        game = discord.Game("in dev mode with Graf. Last restart: " + datetime.now().strftime("%H:%M:%S"))
+        await bot.change_presence(status=discord.Status.dnd, activity=game)
+    else:
+        game = discord.Game(config['playingStatus'])
+        await bot.change_presence(status=discord.Status.online, activity=game)
+
     print("Ready!")
 
 

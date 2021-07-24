@@ -1,3 +1,5 @@
 {
+  "devMode": true,
+  "playingStatus" : "Project Diva",
   "reactChance": 0.03
 }
