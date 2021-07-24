@@ -9,7 +9,7 @@ class ChatLogCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.chatlog = list(csv.DictReader(open('chatlog.tsv', encoding="utf8"), delimiter="\t"))
+        self.chatlog = list(csv.DictReader(open('logs/chatlog.tsv', encoding="utf8"), delimiter="\t"))
         line_count = 0
         for row in self.chatlog:
             line_count += 1

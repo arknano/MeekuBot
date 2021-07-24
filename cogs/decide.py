@@ -8,7 +8,7 @@ class DecideCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        g = open('decide.json')
+        g = open('config/decide.json')
         self.responses = json.load(g)
 
     @commands.command(

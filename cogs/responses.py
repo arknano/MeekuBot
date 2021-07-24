@@ -8,7 +8,7 @@ class ResponsesCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        f = open('responses.json')
+        f = open('config/responses.json')
         self.responses = json.load(f)
 
     @commands.Cog.listener()

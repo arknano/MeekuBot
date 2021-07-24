@@ -9,10 +9,10 @@ class GifCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        f = open('token.json')
+        f = open('config/token.json')
         token = json.load(f)
         self.tenor_key = token['tenor_token']
-        g = open('gif.json')
+        g = open('config/gif.json')
         self.gifJSON = json.load(g)
 
     @commands.command(
