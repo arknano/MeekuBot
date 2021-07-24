@@ -3,16 +3,23 @@ from discord.ext import commands
 from discord import User
 import random
 from datetime import datetime
+import json
+import typing
 
 
 class CoreCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        f = open('config/config.json')
+        self.config = json.load(f)
+        f = open('config/token.json')
+        token = json.load(f)
+        self.adminID = token['admin']
 
     @commands.command(name="mi", brief="Is Meeku awake? Find out!")
     async def _ping(self, ctx):
-        await ctx.send(f"ku!")
+        await ctx.send("ku!")
 
     @commands.command(name="mock", brief="Spongebob meme your words")
     async def _mock(self, ctx):
@@ -41,7 +48,6 @@ class CoreCog(commands.Cog):
         embed.set_thumbnail(url=user.avatar_url)
         embed.add_field(name="ID", value=user.id)
         await ctx.send(embed=embed)
-
 
 def spongemock(input_text):
     output_text = ""

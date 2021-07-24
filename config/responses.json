@@ -1,13 +1,25 @@
 {
-    "french" : {
-        "triggers" : ["france", "french"],
-        "responses" : ["Hon hon hon!", "Oui Oui!", "Hon hon hon baguette!"],
-        "chance" : 0.1
+    "french": {
+        "triggers": [
+            "france",
+            "french"
+        ],
+        "responses": [
+            "Hon hon hon!",
+            "Oui Oui!",
+            "Hon hon hon baguette!"
+        ],
+        "chance": 0.1
     },
-    "miku" : {
-        "triggers" : ["miku", "orb", "sphere"],
-        "responses" : ["<:mikusphere:860682931320520734> ALL HAIL THE MIKUSPHERE <:mikusphere:860682931320520734>"],
-        "chance" : 0.05
+    "miku": {
+        "triggers": [
+            "miku",
+            "orb",
+            "sphere"
+        ],
+        "responses": [
+            "<:mikusphere:860682931320520734> ALL HAIL THE MIKUSPHERE <:mikusphere:860682931320520734>"
+        ],
+        "chance": 0.05
     }
-    
 }

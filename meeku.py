@@ -18,7 +18,7 @@ bot = commands.Bot(command_prefix=get_prefix,
                    intents=discord.Intents.default(), case_insensitive=True)
 
 initial_extensions = ['cogs.core', 'cogs.responses',
-                      'cogs.gif', 'cogs.decide', 'cogs.chatlog']
+                      'cogs.gif', 'cogs.decide', 'cogs.chatlog', 'cogs.admin']
 
 if __name__ == '__main__':
     for extension in initial_extensions:

@@ -44,7 +44,7 @@ async def fun_responses(self, message):
 
 async def react(self, message):
     r = random.random()
-    if r < self.config["reactChance"]:
+    if r < float(self.config["reactChance"]):
         emoji = random.choice(self.bot.emojis)
         await message.add_reaction(emoji=emoji)
 
