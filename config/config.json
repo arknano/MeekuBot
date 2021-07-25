@@ -2,6 +2,10 @@
     "devMode": true,
     "serverMode": false,
     "playingStatus": "Project Diva",
-    "reactChance": 1.0,
-    "customEmojiChance": 0.5
+    "reactChance": 0.03,
+    "customEmojiChance": 0.5,
+    "minMarkovWords" : 5,
+    "maxMarkovWords" : 100,
+    "markovOverlapRatio" : 0.5,
+    "markovChance" : 0.005
 }
