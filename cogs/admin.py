@@ -57,7 +57,7 @@ class AdminCog(commands.Cog):
                         file = open('config/config.json', "w")
                         json.dump(self.config, file, indent=4)
                         file.close()
-                        await ctx.send("Ok, I set " + key + " to " + str(value) + "!")
+                        await ctx.send("Ok, I set " + key + " to " + str(value) + "! Don't forget to reload!")
                 elif mode == "get":
                     await ctx.send("`" + key + ": " + str(self.config[key]) + "`")
                 else:
@@ -76,7 +76,7 @@ class AdminCog(commands.Cog):
                         file = open('config/responses.json', "w")
                         json.dump(self.responses, file, indent=4)
                         file.close()
-                        await ctx.send("Ok, I set " + key + " to " + str(value) + "!")
+                        await ctx.send("Ok, I set " + key + " to " + str(value) + "! Don't forget to reload!")
                 elif mode == "get":
                     await ctx.send("`" + key + ": " + str(self.responses[key]['chance']) + "`")
                 else:

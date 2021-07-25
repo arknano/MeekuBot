@@ -12,6 +12,8 @@ class ResponsesCog(commands.Cog):
         self.responses = json.load(f)
         f = open('config/config.json')
         self.config = json.load(f)
+        f = open('config/emoji.json', encoding="utf8")
+        self.emoji = json.load(f)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -44,8 +46,12 @@ async def fun_responses(self, message):
 
 async def react(self, message):
     r = random.random()
-    if r < float(self.config["reactChance"]):
-        emoji = random.choice(self.bot.emojis)
+    if r < float(self.config['reactChance']):
+        if r < float(self.config['customEmojiChance']):
+            emoji = random.choice(self.bot.emojis)
+        else:
+            emoji = random.choice(self.emoji['list'])['emoji']
+            print(emoji)
         await message.add_reaction(emoji=emoji)
 
 

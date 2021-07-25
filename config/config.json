@@ -1,6 +1,7 @@
 {
-  "devMode": true,
-  "serverMode": true,
-  "playingStatus" : "Project Diva",
-  "reactChance": 0.03
+    "devMode": true,
+    "serverMode": false,
+    "playingStatus": "Project Diva",
+    "reactChance": 1.0,
+    "customEmojiChance": 0.5
 }
