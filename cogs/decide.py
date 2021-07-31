@@ -10,7 +10,7 @@ class DecideCog(commands.Cog):
     def __init__(self, bot):
         local_path = os.path.dirname(__file__)
         self.bot = bot
-        g = open(os.path.join(local_path, '..\\config\\decide.json'))
+        g = open(os.path.join(local_path, os.pardir, 'config/decide.json'))
         self.responses = json.load(g)
 
     @commands.command(

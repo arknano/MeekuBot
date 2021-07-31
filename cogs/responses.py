@@ -10,11 +10,11 @@ class ResponsesCog(commands.Cog):
     def __init__(self, bot):
         local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, '..\\config\\responses.json'))
+        f = open(os.path.join(local_path, os.pardir, 'config/responses.json'))
         self.responses = json.load(f)
-        f = open(os.path.join(local_path, '..\\config\\config.json'))
+        f = open(os.path.join(local_path, os.pardir, 'config/config.json'))
         self.config = json.load(f)
-        f = open(os.path.join(local_path, '..\\config\\emoji.json'), encoding="utf8")
+        f = open(os.path.join(local_path, os.pardir, 'config/emoji.json'), encoding="utf8")
         self.emoji = json.load(f)
 
     @commands.Cog.listener()

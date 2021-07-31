@@ -12,9 +12,9 @@ class CoreCog(commands.Cog):
     def __init__(self, bot):
         local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, '..\\config\\config.json'))
+        f = open(os.path.join(local_path, os.pardir, 'config/config.json'))
         self.config = json.load(f)
-        f = open(os.path.join(local_path, '..\\config\\token.json'))
+        f = open(os.path.join(local_path, os.pardir, 'config/token.json'))
         token = json.load(f)
         self.adminID = token['admin']
 
