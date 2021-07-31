@@ -3,16 +3,18 @@ from discord.ext import commands
 import json
 import requests
 import random
+import os
 
 
 class GifCog(commands.Cog):
 
     def __init__(self, bot):
+        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open('config/token.json')
+        f = open(os.path.join(local_path, '..\\config\\token.json'))
         token = json.load(f)
         self.tenor_key = token['tenor_token']
-        g = open('config/gif.json')
+        g = open(os.path.join(local_path, '..\\config\\gif.json'))
         self.gifJSON = json.load(g)
 
     @commands.command(

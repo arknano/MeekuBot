@@ -4,16 +4,17 @@ from discord import User
 import random
 from datetime import datetime
 import json
-import typing
+import os
 
 
 class CoreCog(commands.Cog):
 
     def __init__(self, bot):
+        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open('config/config.json')
+        f = open(os.path.join(local_path, '..\\config\\config.json'))
         self.config = json.load(f)
-        f = open('config/token.json')
+        f = open(os.path.join(local_path, '..\\config\\token.json'))
         token = json.load(f)
         self.adminID = token['admin']
 

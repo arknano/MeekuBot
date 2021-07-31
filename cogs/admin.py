@@ -9,13 +9,14 @@ import os
 class AdminCog(commands.Cog):
 
     def __init__(self, bot):
+        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open('config/config.json')
+        f = open(os.path.join(local_path, '..\\config\\config.json'))
         self.config = json.load(f)
-        f = open('config/token.json')
+        f = open(os.path.join(local_path, '..\\config\\token.json'))
         token = json.load(f)
         self.adminID = token['admin']
-        f = open('config/responses.json')
+        f = open(os.path.join(local_path, '..\\config\\responses.json'))
         self.responses = json.load(f)
 
     @commands.command(name="config", hidden=True)

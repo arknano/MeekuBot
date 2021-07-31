@@ -5,13 +5,15 @@ import csv
 import typing
 import markovify
 import json
+import os
 
 
 class ChatLogCog(commands.Cog):
 
     def __init__(self, bot):
+        local_path = os.path.dirname(__file__)
         self.bot = bot
-        self.chatlog = list(csv.DictReader(open('logs/chatlog.tsv', encoding="utf8"), delimiter="\t"))
+        self.chatlog = list(csv.DictReader(open(os.path.join(local_path, '..\\logs\\chatlog.tsv'), encoding="utf8"), delimiter="\t"))
         markovlines = ""
         line_count = 0
         for row in self.chatlog:
@@ -19,7 +21,7 @@ class ChatLogCog(commands.Cog):
             line_count += 1
         print(f'Processed {line_count} lines in chat history.')
         self.markov = markovify.NewlineText(markovlines, state_size=1)
-        f = open('config/config.json')
+        f = open(os.path.join(local_path, '..\\config\\config.json'))
         self.config = json.load(f)
 
     @commands.Cog.listener()

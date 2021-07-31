@@ -2,10 +2,12 @@ from discord.ext import commands
 import discord
 import json
 from datetime import datetime
+import os
 
-f = open('config/token.json')
+local_path = os.path.dirname(__file__)
+f = open(os.path.join(local_path, 'config/token.json'))
 token = json.load(f)
-f = open('config/config.json')
+f = open(os.path.join(local_path, 'config/config.json'))
 config = json.load(f)
 
 
