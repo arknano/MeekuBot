@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands
+from discord.ext import tasks, commands
 from discord import User
 import random
 from datetime import datetime
@@ -17,6 +17,7 @@ class CoreCog(commands.Cog):
         f = open(os.path.join(local_path, os.pardir, 'config/token.json'))
         token = json.load(f)
         self.adminID = token['admin']
+        self.hydrate.start()
 
     @commands.command(name="mi", brief="Is Meeku awake? Find out!")
     async def _ping(self, ctx):
@@ -49,6 +50,17 @@ class CoreCog(commands.Cog):
         embed.set_thumbnail(url=user.avatar_url)
         embed.add_field(name="ID", value=user.id)
         await ctx.send(embed=embed)
+
+    @tasks.loop(minutes=60.0)
+    async def hydrate(self):
+        self.hydrate.change_interval(minutes=random.randrange(50, 70))
+        if datetime.now().hour == self.config['hydrateRemindHour']:
+            channel = self.bot.get_channel(860458606641807370)
+            await channel.send("@here Daily reminder to stay hydrated!")
+
+    @hydrate.before_loop
+    async def before_printer(self):
+        await self.bot.wait_until_ready()
 
 def spongemock(input_text):
     output_text = ""

@@ -7,5 +7,6 @@
     "minMarkovWords" : 5,
     "maxMarkovWords" : 100,
     "markovOverlapRatio" : 0.5,
-    "markovChance" : 0.005
+    "markovChance" : 0.005,
+    "hydrateRemindHour" : 13
 }
