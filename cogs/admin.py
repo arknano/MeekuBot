@@ -116,5 +116,14 @@ class AdminCog(commands.Cog):
         else:
             await ctx.send("No!")
 
+    @commands.command(name="sleep", hidden=True)
+    async def _sleep(self, ctx):
+        if ctx.author.id == self.adminID:
+            await ctx.send("Meeku is going to have a nap! Nini!")
+            print("Sleep command recieved at " + datetime.now().strftime("%H:%M:%S"))
+            await self.bot.close()
+        else:
+            await ctx.send("No!")
+
 def setup(bot):
     bot.add_cog(AdminCog(bot))
