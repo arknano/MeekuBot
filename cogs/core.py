@@ -55,7 +55,7 @@ class CoreCog(commands.Cog):
     async def hydrate(self):
         self.hydrate.change_interval(minutes=random.randrange(50, 70))
         if datetime.now().hour == self.config['hydrateRemindHour']:
-            channel = self.bot.get_channel(860458606641807370)
+            channel = self.bot.get_channel(self.config['generalChannelID'])
             await channel.send("@here Daily reminder to stay hydrated!")
 
     @hydrate.before_loop
