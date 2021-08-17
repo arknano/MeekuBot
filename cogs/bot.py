@@ -6,7 +6,7 @@ import typing
 import os
 
 
-class AdminCog(commands.Cog):
+class BotCog(commands.Cog):
 
     def __init__(self, bot):
         local_path = os.path.dirname(__file__)
@@ -126,4 +126,4 @@ class AdminCog(commands.Cog):
             await ctx.send("No!")
 
 def setup(bot):
-    bot.add_cog(AdminCog(bot))
+    bot.add_cog(BotCog(bot))
