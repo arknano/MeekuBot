@@ -34,6 +34,9 @@ async def naughty_mock(self, message):
             await message.author.remove_roles(role)
             await message.channel.send("Good.")
         else:
+            for prefix in self.config['prefixes']:
+                if message.content.startswith(prefix):
+                    return
             await message.channel.send(sponge_mock(message.content))
 
 

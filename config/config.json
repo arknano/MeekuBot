@@ -10,5 +10,6 @@
     "markovChance" : 0.005,
     "hydrateRemindHour" : 13,
     "botChannelID": 860458606641807370,
-    "generalChannelID" : 819745580946685964
+    "generalChannelID" : 819745580946685964,
+    "prefixes": ["!", "."]
 }

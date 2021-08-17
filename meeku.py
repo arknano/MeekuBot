@@ -12,15 +12,15 @@ config = json.load(f)
 
 
 def get_prefix(bot, message):
-    prefixes = ['!', '.']
+    prefixes = config['prefixes']
     return commands.when_mentioned_or(*prefixes)(bot, message)
 
 
 bot = commands.Bot(command_prefix=get_prefix,
-                   intents=discord.Intents.default(), case_insensitive=True)
+                   intents=discord.Intents.all(), case_insensitive=True)
 
 initial_extensions = ['cogs.core', 'cogs.responses',
-                      'cogs.gif', 'cogs.decide', 'cogs.chatlog', 'cogs.bot']
+                      'cogs.gif', 'cogs.decide', 'cogs.chatlog', 'cogs.bot', 'cogs.admin']
 
 if __name__ == '__main__':
     for extension in initial_extensions:
