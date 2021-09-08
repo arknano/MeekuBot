@@ -5,6 +5,8 @@ import random
 from datetime import datetime
 import json
 import os
+import sqlite3 as sql
+from ctparse import ctparse
 
 
 class CoreCog(commands.Cog):
@@ -18,6 +20,17 @@ class CoreCog(commands.Cog):
         token = json.load(f)
         self.adminID = token['admin']
         self.hydrate.start()
+        self.db = sql.connect(self.config['chatlogDB'])
+        with self.db:
+            cursor = self.db.cursor()
+            self.db.execute("""
+                CREATE TABLE IF NOT EXISTS chatlog (
+                    id integer NOT NULL,
+                    nick text NOT NULL,
+                    message text NOT NULL
+                );
+            """)
+        self.remind.start()
 
     @commands.command(name="mi", brief="Is Meeku awake? Find out!")
     async def _ping(self, ctx):
@@ -59,8 +72,55 @@ class CoreCog(commands.Cog):
             await channel.send("@here Daily reminder to stay hydrated!")
 
     @hydrate.before_loop
-    async def before_printer(self):
+    async def before_hydrate(self):
         await self.bot.wait_until_ready()
+
+    @tasks.loop(minutes=1.0)
+    async def remind(self):
+        self.hydrate.change_interval(minutes=random.randrange(50, 70))
+        if datetime.now().minute == self.config['hydrateRemindHour']:
+            channel = self.bot.get_channel(self.config['generalChannelID'])
+            # await channel.send("@here Daily reminder to stay hydrated!")
+
+    @remind.before_loop
+    async def before_remind(self):
+        await self.bot.wait_until_ready()
+
+    @commands.command(name="remind")
+    async def _remind(self, ctx, *, arg="OVERRIDEXXX"):
+        if arg == "OVERRIDEXXX":
+            await ctx.send("Huh?")
+            return
+        args = ctx.message.content.split(" ", 2)
+        if args[1].lower() == "me":
+            user = ctx.message.author
+            print(user)
+        else:
+            user = await getUserFromMention(ctx, args[1])
+            print(user)
+            if user is None:
+                await ctx.send("Who am I supposed to be reminding? Try again!")
+                return
+        if len(args) == 2:
+            if user == ctx.message.author:
+                await ctx.send("Remind you when? Remind you what???")
+            elif user == self.bot.user:
+                await ctx.send("Remind me when? Remind me what???")
+            else:
+                await ctx.send("Remind them when? Remind them what???")
+            return
+        content = args[2].split(" to ", 1)
+        if len(content) == 1:
+            await ctx.send("That's not how this works.")
+            return
+        now = datetime.now()
+        t = ctparse(content[0], ts=now).resolution
+        dt = datetime(t.year, t.month, t.day, t.hour or 0, t.minute or 0)
+        if user == ctx.message.author:
+            name = "you"
+        else:
+            name = user.display_name
+        await ctx.send("Ok, I'll remind {0} at {1} to {2}".format(name, dt, content[1]))
 
 def spongemock(input_text):
     output_text = ""
@@ -74,6 +134,11 @@ def spongemock(input_text):
             output_text += char
     return output_text
 
+async def getUserFromMention(ctx, mention):
+    mention = mention.replace("<", "")
+    mention = mention.replace(">", "")
+    id = mention.replace("@!", "")
+    return await ctx.guild.fetch_member(id)
 
 def setup(bot):
     bot.add_cog(CoreCog(bot))
