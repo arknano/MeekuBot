@@ -3,19 +3,16 @@ from discord.ext import commands
 import random
 import json
 import os
-
+from functions.fun import sponge_mock
+from functions.data import *
 
 class ResponsesCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, os.pardir, 'config/responses.json'))
-        self.responses = json.load(f)
-        f = open(os.path.join(local_path, os.pardir, 'config/config.json'))
-        self.config = json.load(f)
-        f = open(os.path.join(local_path, os.pardir, 'config/emoji.json'), encoding="utf8")
-        self.emoji = json.load(f)
+        self.responses = load_responses_config()
+        self.config = load_bot_config()
+        self.emoji = load_emoji_config()
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -62,16 +59,3 @@ async def react(self, message):
 
 def setup(bot):
     bot.add_cog(ResponsesCog(bot))
-
-
-def sponge_mock(input_text):
-    output_text = ""
-    for char in input_text:
-        if char.isalpha():
-            if random.random() > 0.5:
-                output_text += char.upper()
-            else:
-                output_text += char.lower()
-        else:
-            output_text += char
-    return output_text

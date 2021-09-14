@@ -1,17 +1,13 @@
-import discord
 from discord.ext import commands
-import json
 import random
-import os
+from functions.data import *
 
 
 class DecideCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
-        g = open(os.path.join(local_path, os.pardir, 'config/decide.json'))
-        self.responses = json.load(g)
+        self.responses = load_decide_config()
 
     @commands.command(
         name="decide",

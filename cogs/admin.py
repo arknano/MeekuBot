@@ -1,20 +1,13 @@
 import discord
 from discord.ext import commands
-from discord import User
 from discord.utils import get
-import json
-import random
-import os
-
+from functions.data import *
 
 class AdminCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, os.pardir, 'config/token.json'))
-        token = json.load(f)
-        self.adminID = token['admin']
+        self.adminID = load_tokens()['admin']
 
     @commands.command(
         name="naughty",

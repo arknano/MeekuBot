@@ -3,22 +3,18 @@ from discord.ext import tasks, commands
 from discord import User
 import random
 from datetime import datetime
-import json
-import os
 import sqlite3 as sql
 from ctparse import ctparse
+from functions.fun import sponge_mock
+from functions.data import *
 
 
 class CoreCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, os.pardir, 'config/config.json'))
-        self.config = json.load(f)
-        f = open(os.path.join(local_path, os.pardir, 'config/token.json'))
-        token = json.load(f)
-        self.adminID = token['admin']
+        self.config = load_bot_config()
+        self.adminID = load_tokens()['admin']
         self.hydrate.start()
         self.db = sql.connect(self.config['remindersDB'])
         with self.db:
@@ -42,7 +38,7 @@ class CoreCog(commands.Cog):
     async def _mock(self, ctx):
         message = ctx.message.content.replace(
             ctx.prefix + ctx.invoked_with + " ", "")
-        await ctx.send(spongemock(message))
+        await ctx.send(sponge_mock(message))
 
     @commands.command(name="slap", brief="Slap someone with a fish-based entity")
     async def _slap(self, ctx, user: User):
@@ -139,18 +135,6 @@ class CoreCog(commands.Cog):
         else:
             name = user.display_name
         await ctx.send("Ok, I'll remind {0} at {1} about: {2}".format(name, dt, content[1].strip()))
-
-def spongemock(input_text):
-    output_text = ""
-    for char in input_text:
-        if char.isalpha():
-            if random.random() > 0.5:
-                output_text += char.upper()
-            else:
-                output_text += char.lower()
-        else:
-            output_text += char
-    return output_text
 
 async def getUserFromMention(ctx, mention):
     mention = mention.replace("<", "")

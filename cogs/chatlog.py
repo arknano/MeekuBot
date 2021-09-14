@@ -1,22 +1,18 @@
 import random
 from discord import User
 from discord.ext import commands
-import csv
 import typing
 import markovify
-import json
-import os
 import sqlite3 as sql
+from functions.data import *
 
 
 class ChatLogCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
 
-        f = open(os.path.join(local_path, os.pardir, 'config/config.json'))
-        self.config = json.load(f)
+        self.config = load_bot_config()
         self.db = sql.connect(self.config['chatlogDB'])
         with self.db:
             cursor = self.db.cursor()

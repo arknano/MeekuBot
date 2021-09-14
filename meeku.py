@@ -1,14 +1,10 @@
 from discord.ext import commands
 import discord
-import json
 from datetime import datetime
-import os
+from functions.data import *
 
-local_path = os.path.dirname(__file__)
-f = open(os.path.join(local_path, 'config/token.json'))
-token = json.load(f)
-f = open(os.path.join(local_path, 'config/config.json'))
-config = json.load(f)
+token = load_tokens()
+config = load_bot_config()
 
 
 def get_prefix(bot, message):

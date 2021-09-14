@@ -1,21 +1,15 @@
-import discord
 from discord.ext import commands
-import json
 import requests
 import random
-import os
+from functions.data import *
 
 
 class GifCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, os.pardir, 'config/token.json'))
-        token = json.load(f)
-        self.tenor_key = token['tenor_token']
-        g = open(os.path.join(local_path, os.pardir, 'config/gif.json'))
-        self.gifJSON = json.load(g)
+        self.tenor_key = load_tokens()['tenor_token']
+        self.gifJSON = load_gif_config()
 
     @commands.command(
         name="aunty",

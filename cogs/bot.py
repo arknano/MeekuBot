@@ -1,23 +1,17 @@
 import sys
 from datetime import datetime
 from discord.ext import commands
-import json
 import typing
-import os
+from functions.data import *
 
 
 class BotCog(commands.Cog):
 
     def __init__(self, bot):
-        local_path = os.path.dirname(__file__)
         self.bot = bot
-        f = open(os.path.join(local_path, os.pardir, 'config/config.json'))
-        self.config = json.load(f)
-        f = open(os.path.join(local_path, os.pardir, 'config/token.json'))
-        token = json.load(f)
-        self.adminID = token['admin']
-        f = open(os.path.join(local_path, os.pardir, 'config/responses.json'))
-        self.responses = json.load(f)
+        self.config = load_bot_config()
+        self.adminID = load_tokens()['admin']
+        self.responses = load_responses_config()
 
     @commands.command(name="config", hidden=True)
     async def _config(self, ctx, mode, key, value: typing.Union[bool, int, float, str] = "NULL"):
