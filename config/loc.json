@@ -1,0 +1,88 @@
+{
+  "base": {
+    "botOnline": "Meeku's here!",
+    "naughtySet": "Bad!",
+    "naughtyRemoved": "Fine...",
+    "naughtyApologised": "Good.",
+    "noContext": "Shit {user} says: {message}",
+    "slapMeeku": "{meeku} slaps {author} about a bit with a large trout instead.",
+    "slap": "{author} slaps {target} about a bit with a large trout.",
+    "hydrate": "Daily reminder to stay hydrated!",
+    "selfRemind": "Hey {author}, here's your reminder: {message}",
+    "remind": "Hey {target}, {author} wanted me to remind you: {message}",
+    "remindSetupBadUser": "Who am I supposed to be reminding? Try again!",
+    "remindSetupNoArgs": "Huh?",
+    "remindSetupBadArgs": "Remind you when? Remind you what???",
+    "remindSetupSemicolon": "Did you forget a semicolon?",
+    "remindSetupAck": "Ok, I'll remind {target} at {time} about: {message}",
+    "noGifFound": "Nothing found! :(",
+    "decide": {
+      "yes": [
+        "Umm... Yes!",
+        "Totally.",
+        "Yes.",
+        "Yes!",
+        "Absolutely!",
+        "Why not?"
+      ],
+      "no": [
+        "No.",
+        "No!",
+        "Absolutely not.",
+        "Under no circumstances!",
+        "Nope!",
+        "Ummm... No!"
+      ],
+      "decide": [
+        "Definitely {choice}!",
+        "{choice} is the best option.",
+        "You've always gotta go with {choice}.",
+        "{choice}!",
+        "Everything's coming up {choice}."
+      ]
+    }
+  },
+  "shouting": {
+    "botOnline": "MEEKU'S HERE!!!",
+    "naughtySet": "BAD!!!",
+    "naughtyRemoved": "FINE!!!",
+    "naughtyApologised": "GOOD!!!",
+    "noContext": "SHIT {user} SAYS: {message}",
+    "slapMeeku": "{meeku} SLAPS {author} ABOUT A BIT WITH A LARGE TROUT INSTEAD!!!",
+    "slap": "{author} SLAPS {target} ABOUT A BIT WITH A LARGE TROUT!!!",
+    "hydrate": "DAILY REMINDER TO STAY HYDRATED!!!",
+    "selfRemind": "HEY {author}, HERE'S YOUR REMINDER: {message}",
+    "remind": "HEY {target}, {author} WANTED ME TO REMIND YOU: {message}",
+    "remindSetupBadUser": "WHO AM I SUPPOSED TO BE REMINDING?! TRY AGAIN!!!",
+    "remindSetupNoArgs": "HUH?!",
+    "remindSetupBadArgs": "REMIND YOU WHEN?! REMIND YOU WHAT?!?!?!",
+    "remindSetupSemicolon": "DID YOU FORGET A SEMICOLON?!",
+    "remindSetupAck": "OK, I'LL REMIND {target} AT {time} ABOUT: {message}",
+    "noGifFound": "NOTHING FOUND!!! :(",
+    "decide": {
+      "yes": [
+        "UMM... YES!!!",
+        "TOTALLY!!!",
+        "YES!",
+        "YES!!!",
+        "ABSOLUTELY!!!",
+        "WHY NOT?!"
+      ],
+      "no": [
+        "NO!",
+        "NO!!!",
+        "ABSOLUTELY NOT!!!",
+        "UNDER NO CIRCUMSTANCES!!!",
+        "NOPE!!!",
+        "UMMM... NO!!!"
+      ],
+      "decide": [
+        "DEFINITELY {choice}!!!",
+        "{choice} IS THE BEST OPTION!!!",
+        "YOU'VE ALWAYS GOTTA GO WITH {choice}!!!",
+        "{choice}!!!",
+        "EVERYTHING'S COMING UP {choice}!!!"
+      ]
+    }
+  }
+}

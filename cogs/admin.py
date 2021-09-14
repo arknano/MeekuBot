@@ -8,6 +8,7 @@ class AdminCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.adminID = load_tokens()['admin']
+        self.loc = load_loc()[load_bot_config()['language']]
 
     @commands.command(
         name="naughty",
@@ -19,12 +20,10 @@ class AdminCog(commands.Cog):
             role = discord.utils.find(lambda r: r.name == 'naughty', ctx.guild.roles)
             if role in user.roles:
                 await user.remove_roles(role)
-                await ctx.send("Fine...")
+                await ctx.send(self.loc['naughtyRemoved'])
             else:
                 await user.add_roles(discord.utils.get(ctx.guild.roles, name="naughty"))
-                await ctx.send("Bad!")
-        else:
-            await ctx.send("There is no naughty role!")
+                await ctx.send(self.loc['naughtySet'])
 
 
 def setup(bot):

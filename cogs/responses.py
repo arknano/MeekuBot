@@ -13,6 +13,7 @@ class ResponsesCog(commands.Cog):
         self.responses = load_responses_config()
         self.config = load_bot_config()
         self.emoji = load_emoji_config()
+        self.loc = load_loc()[self.config['language']]
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -25,11 +26,10 @@ class ResponsesCog(commands.Cog):
 
 async def naughty_mock(self, message):
     if "naughty" in [y.name.lower() for y in message.author.roles]:
-        key = "im sorry meeku i love you"
-        if message.content.lower() == key.lower():
+        if message.content.lower() == self.config['naughtyApologiseString'].lower():
             role = discord.utils.get(message.guild.roles, name='naughty')
             await message.author.remove_roles(role)
-            await message.channel.send("Good.")
+            await message.channel.send(self.loc['naughtyAplogised'])
         else:
             for prefix in self.config['prefixes']:
                 if message.content.startswith(prefix):

@@ -11,8 +11,8 @@ class ChatLogCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-
         self.config = load_bot_config()
+        self.loc = load_loc()[self.config['language']]
         self.db = sql.connect(self.config['chatlogDB'])
         with self.db:
             cursor = self.db.cursor()
@@ -50,7 +50,7 @@ class ChatLogCog(commands.Cog):
             name = text[1]
         else:
             name = "{0} ({1})".format(text[1], username)
-        await ctx.send("Shit {0} says: \"{1}\"".format(name, text[2]))
+        await ctx.send(self.loc['noContext'].format(user=name, message=text[2]))
 
     @commands.command(name="nonsense", brief="Attempt to generate semi-coherent sentence based on chat history")
     async def _nonsense(self, ctx):

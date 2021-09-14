@@ -9,16 +9,16 @@ def load_config_file(path):
     return json.load(file)
 
 
+def load_loc():
+    return load_config_file('config/loc.json')
+
+
 def load_responses_config():
     return load_config_file('config/responses.json')
 
 
 def load_bot_config():
     return load_config_file('config/config.json')
-
-
-def load_decide_config():
-    return load_config_file('config/decide.json')
 
 
 def load_emoji_config():

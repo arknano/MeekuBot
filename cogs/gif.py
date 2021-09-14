@@ -10,6 +10,7 @@ class GifCog(commands.Cog):
         self.bot = bot
         self.tenor_key = load_tokens()['tenor_token']
         self.gifJSON = load_gif_config()
+        self.loc = load_loc()[load_bot_config()['language']]
 
     @commands.command(
         name="aunty",
@@ -54,7 +55,7 @@ def tenor_random_gif(self, tag):
         gif = random_entry['media'][0]['gif']['url']
         return gif
     else:
-        return "Nothing found! :("
+        return self.loc['noGifFound']
 
 
 def setup(bot):

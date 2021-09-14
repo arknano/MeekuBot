@@ -5,6 +5,7 @@ from functions.data import *
 
 token = load_tokens()
 config = load_bot_config()
+loc = load_loc()[config['language']]
 
 
 def get_prefix(bot, message):
@@ -32,7 +33,7 @@ async def on_ready():
         game = discord.Game(config['playingStatus'])
         await bot.change_presence(status=discord.Status.online, activity=game)
     channel = bot.get_channel(config['botChannelID'])
-    await channel.send("Meeku\'s here!")
+    await channel.send(loc['botOnline'])
     print("Ready! Started at " + datetime.now().strftime("%H:%M:%S"))
 
 

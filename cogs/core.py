@@ -14,6 +14,7 @@ class CoreCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = load_bot_config()
+        self.loc = load_loc()[self.config['language']]
         self.adminID = load_tokens()['admin']
         self.hydrate.start()
         self.db = sql.connect(self.config['remindersDB'])
@@ -44,9 +45,9 @@ class CoreCog(commands.Cog):
     async def _slap(self, ctx, user: User):
         if user is self.bot.user:
             await ctx.send(
-                self.bot.user.mention + " slaps " + ctx.message.author.mention + " about a bit with a large trout instead.")
+                self.loc["slapMeeku"].format(meeku=self.bot.user.mention, author=ctx.message.author.mention))
         else:
-            await ctx.send(ctx.message.author.mention + " slaps " + user.mention + " about a bit with a large trout.")
+            await ctx.send(self.loc["slap"].format(author=ctx.message.author.mention, target=user.mention))
 
     @commands.command(name="whois", brief="Get totally useless data about a user because this isn't irc")
     async def _whois(self, ctx, user: User):
@@ -67,7 +68,7 @@ class CoreCog(commands.Cog):
         self.hydrate.change_interval(minutes=random.randrange(50, 70))
         if datetime.now().hour == self.config['hydrateRemindHour']:
             channel = self.bot.get_channel(self.config['generalChannelID'])
-            await channel.send("@here Daily reminder to stay hydrated!")
+            await channel.send(self.loc['hydrate'])
 
     @hydrate.before_loop
     async def before_hydrate(self):
@@ -84,10 +85,10 @@ class CoreCog(commands.Cog):
                     mention = self.bot.get_user(row[2]).mention
                     channel = self.bot.get_channel(self.config['generalChannelID'])
                     if row[1] == row[2]:
-                        await channel.send("Hey {0}, here's your reminder: {1}".format(mention, row[4]))
+                        await channel.send(self.loc['selfRemind'].format(author=mention, message=row[4]))
                     else:
                         author = self.bot.get_user(row[1]).mention
-                        await channel.send("Hey {0}, {1} wanted me to remind you: {2}".format(mention, author, row[4]))
+                        await channel.send(self.loc['remind'].format(target=mention, author=author, message=row[4]))
                     cursor.execute("DELETE FROM reminders WHERE setTimestamp=?", (row[0],))
 
 
@@ -98,7 +99,7 @@ class CoreCog(commands.Cog):
     @commands.command(name="remind")
     async def _remind(self, ctx, *, arg="OVERRIDEXXX"):
         if arg == "OVERRIDEXXX":
-            await ctx.send("Huh?")
+            await ctx.send(self.loc['remindSetupNoArgs'])
             return
         args = ctx.message.content.split(" ", 2)
         if args[1].lower() == "me":
@@ -106,19 +107,14 @@ class CoreCog(commands.Cog):
         else:
             user = await getUserFromMention(ctx, args[1])
             if user is None:
-                await ctx.send("Who am I supposed to be reminding? Try again!")
+                await ctx.send(self.loc['remindSetupBadUser'])
                 return
         if len(args) == 2:
-            if user == ctx.message.author:
-                await ctx.send("Remind you when? Remind you what???")
-            elif user == self.bot.user:
-                await ctx.send("Remind me when? Remind me what???")
-            else:
-                await ctx.send("Remind them when? Remind them what???")
+            await ctx.send(self.loc['remindSetupBadArgs'])
             return
         content = args[2].split(";", 1)
         if len(content) == 1:
-            await ctx.send("That's not how this works.")
+            await ctx.send(self.loc['remindSetupSemicolon'])
             return
         now = datetime.now()
         t = ctparse(content[0], ts=now).resolution
@@ -134,7 +130,7 @@ class CoreCog(commands.Cog):
             name = "you"
         else:
             name = user.display_name
-        await ctx.send("Ok, I'll remind {0} at {1} about: {2}".format(name, dt, content[1].strip()))
+        await ctx.send(self.loc['remindSetupAck'].format(target=name, time=dt, message=content[1].strip()))
 
 async def getUserFromMention(ctx, mention):
     mention = mention.replace("<", "")

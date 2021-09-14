@@ -4,14 +4,19 @@
     "playingStatus": "Project Diva",
     "reactChance": 0.03,
     "customEmojiChance": 0.5,
-    "minMarkovWords" : 5,
-    "maxMarkovWords" : 100,
-    "markovOverlapRatio" : 0.5,
-    "markovChance" : 0.005,
-    "hydrateRemindHour" : 13,
+    "minMarkovWords": 5,
+    "maxMarkovWords": 100,
+    "markovOverlapRatio": 0.5,
+    "markovChance": 0.005,
+    "hydrateRemindHour": 13,
     "botChannelID": 860458606641807370,
-    "generalChannelID" : 819745580946685964,
-    "prefixes": ["!", "."],
+    "generalChannelID": 819745580946685964,
+    "prefixes": [
+        "!",
+        "."
+    ],
     "chatlogDB": "chatlog.db",
-    "remindersDB": "reminders.db"
+    "remindersDB": "reminders.db",
+    "naughtyApologiseString": "im sorry meeku i love you",
+    "language": "shouting"
 }

@@ -7,7 +7,7 @@ class DecideCog(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.responses = load_decide_config()
+        self.strings = load_loc()[load_bot_config()['language']]['decide']
 
     @commands.command(
         name="decide",
@@ -18,13 +18,13 @@ class DecideCog(commands.Cog):
         choices = ctx.message.content.split(" or ")
         if arg == "OVERRIDEXXX" or len(choices) == 1:
             if random.getrandbits(1):
-                await ctx.message.channel.send(random.choice(self.responses['yes']))
+                await ctx.message.channel.send(random.choice(self.strings['yes']))
             else:
-                await ctx.message.channel.send(random.choice(self.responses['no']))
+                await ctx.message.channel.send(random.choice(self.strings['no']))
         else:
             choices[0] = choices[0].replace(
                 ctx.prefix + ctx.invoked_with + " ", "")
-            response = random.choice(self.responses['decide'])
+            response = random.choice(self.strings['decide'])
             choice = random.choice(choices)
             await ctx.message.channel.send(response.format(choice=choice))
 
