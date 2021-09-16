@@ -16,6 +16,7 @@
     "remindSetupSemicolon": "Did you forget a semicolon?",
     "remindSetupAck": "Ok, I'll remind {target} at {time} about: {message}",
     "noGifFound": "Nothing found! :(",
+    "nzd": "Hey <@84291698015891456> show us what you did on defender today!",
     "decide": {
       "yes": [
         "Umm... Yes!",
@@ -59,6 +60,7 @@
     "remindSetupSemicolon": "DID YOU FORGET A SEMICOLON?!",
     "remindSetupAck": "OK, I'LL REMIND {target} AT {time} ABOUT: {message}",
     "noGifFound": "NOTHING FOUND!!! :(",
+    "nzd": "HEY <@84291698015891456> SHOW US WHAT YOU DID ON DEFENDER TODAY!!!",
     "decide": {
       "yes": [
         "UMM... YES!!!",

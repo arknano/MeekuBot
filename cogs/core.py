@@ -17,6 +17,7 @@ class CoreCog(commands.Cog):
         self.loc = load_loc()[self.config['language']]
         self.adminID = load_tokens()['admin']
         self.hydrate.start()
+        self.no_zero_days.start()
         self.db = sql.connect(self.config['remindersDB'])
         with self.db:
             cursor = self.db.cursor()
@@ -72,6 +73,17 @@ class CoreCog(commands.Cog):
 
     @hydrate.before_loop
     async def before_hydrate(self):
+        await self.bot.wait_until_ready()
+
+    @tasks.loop(minutes=60.0)
+    async def no_zero_days(self):
+        self.no_zero_days.change_interval(minutes=random.randrange(50, 70))
+        if datetime.now().hour == self.config['nzdRemindHour']:
+            channel = self.bot.get_channel(self.config['generalChannelID'])
+            await channel.send(self.loc['nzd'])
+
+    @no_zero_days.before_loop
+    async def before_no_zero_days(self):
         await self.bot.wait_until_ready()
 
     @tasks.loop(seconds=30.0)
