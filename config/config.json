@@ -18,7 +18,7 @@
         "."
     ],
     "chatlogDB": "chatlog.db",
-    "remindersDB": "reminders.db",
+    "botDB": "bot.db",
     "naughtyApologiseString": "im sorry meeku i love you",
     "language": "base"
 }

@@ -18,7 +18,7 @@ class CoreCog(commands.Cog):
         self.adminID = load_tokens()['admin']
         self.hydrate.start()
         self.no_zero_days.start()
-        self.db = sql.connect(self.config['remindersDB'])
+        self.db = sql.connect(self.config['botDB'])
         with self.db:
             cursor = self.db.cursor()
             self.db.execute("""

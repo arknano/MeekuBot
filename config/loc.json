@@ -18,6 +18,15 @@
     "noGifFound": "Nothing found! :(",
     "nzd": "Hey <@84291698015891456> show us what you did on defender today!",
     "decide": {
+      "chooseNoArgument": "This command takes arguments!",
+      "chooseRestrictedKey": "Thats a restricted key, try something else!",
+      "chooseNotTXT": "URL must end in .txt!",
+      "chooseInvalidURL": "Is that even a URL?",
+      "chooseDuplicateKey": "That key already exists!",
+      "chooseAddSuccess": "Ok, key added!",
+      "chooseDeleteSuccess": "Ok, key deleted!",
+      "chooseDeleteReject": "You don't have permission to delete that!",
+      "chooseKeyNotFound": "That key doesn't exist!",
       "yes": [
         "Umm... Yes!",
         "Totally.",
@@ -62,6 +71,15 @@
     "noGifFound": "NOTHING FOUND!!! :(",
     "nzd": "HEY <@84291698015891456> SHOW US WHAT YOU DID ON DEFENDER TODAY!!!",
     "decide": {
+      "chooseNoArgument": "THIS COMMAND TAKES ARGUMENTS!",
+      "chooseRestrictedKey": "THATS A RESTRICTED KEY, TRY SOMETHING ELSE!",
+      "chooseNotTXT": "URL MUST END IN .TXT!",
+      "chooseInvalidURL": "IS THAT EVEN A URL?",
+      "chooseDuplicateKey": "THAT KEY ALREADY EXISTS!",
+      "chooseAddSuccess": "OK, KEY ADDED!",
+      "chooseDeleteSuccess": "ok, key deleted!",
+      "chooseDeleteReject": "YOU DON'T HAVE PERMISSION TO DELETE THAT!",
+      "chooseKeyNotFound": "THAT KEY DOESN'T EXIST!",
       "yes": [
         "UMM... YES!!!",
         "TOTALLY!!!",
