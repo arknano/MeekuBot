@@ -12,6 +12,7 @@
     "nzdRemindHour": 21,
     "botChannelID": 860458606641807370,
     "generalChannelID": 819745580946685964,
+    "hobbiesChannelID": 819745624496668682,
     "prefixes": [
         "!",
         "."
@@ -19,5 +20,5 @@
     "chatlogDB": "chatlog.db",
     "remindersDB": "reminders.db",
     "naughtyApologiseString": "im sorry meeku i love you",
-    "language": "shouting"
+    "language": "base"
 }

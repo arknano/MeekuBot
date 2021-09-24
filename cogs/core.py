@@ -79,7 +79,7 @@ class CoreCog(commands.Cog):
     async def no_zero_days(self):
         self.no_zero_days.change_interval(minutes=random.randrange(50, 70))
         if datetime.now().hour == self.config['nzdRemindHour']:
-            channel = self.bot.get_channel(self.config['generalChannelID'])
+            channel = self.bot.get_channel(self.config['hobbiesChannelID'])
             await channel.send(self.loc['nzd'])
 
     @no_zero_days.before_loop
