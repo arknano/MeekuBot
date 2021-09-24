@@ -29,7 +29,7 @@ async def naughty_mock(self, message):
         if message.content.lower() == self.config['naughtyApologiseString'].lower():
             role = discord.utils.get(message.guild.roles, name='naughty')
             await message.author.remove_roles(role)
-            await message.channel.send(self.loc['naughtyAplogised'])
+            await message.channel.send(self.loc['naughtyApologised'])
         else:
             for prefix in self.config['prefixes']:
                 if message.content.startswith(prefix):
