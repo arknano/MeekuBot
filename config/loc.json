@@ -104,5 +104,56 @@
         "EVERYTHING'S COMING UP {choice}!!!"
       ]
     }
+  },
+  "teenagedweeb": {
+    "botOnline": "ohaiyou minna-chan!! meeku-chwans here!! ^^",
+    "naughtySet": "owo n-naughty!!",
+    "naughtyRemoved": "uwu ok fine..",
+    "naughtyApologised": "hihi i wuv u :3c",
+    "noContext": "fings {user} says O///O: {message}",
+    "slapMeeku": "{meeku} glomps {author} instead hihi rawr XD.",
+    "slap": "{author} glomps {target} !!! so kyute >///<",
+    "hydrate": "EVERYWUN! Meeku-chan wants u to stay hydwated!! :3c",
+    "selfRemind": "owo Umm... {author}-chan? Here's ur weminder: {message}",
+    "remind": "owo Umm... {target}-chan, {author}-nii-chan wanted me to wemind u: {message}",
+    "remindSetupBadUser": "Who should Meeku-chwan remind??? o_o",
+    "remindSetupNoArgs": "e-eehh? o_o",
+    "remindSetupBadArgs": "e-etto... Who should Meeku-chwan remind? a-and when??? o_o",
+    "remindSetupSemicolon": "onii-chan u forgot a semicolon baka!! xD",
+    "remindSetupAck": "oky!! meeku-chwan will wemind {target} at {time} about: {message}",
+    "noGifFound": "uwaaaa!!! meeku-chwan didnt find any gifs owo",
+    "nzd": "*glomps* <@84291698015891456>-onii-chan!! show minna-chan what u did on defender today!",
+    "decide": {
+      "chooseNoArgument": "p-pwease include an argument... uwu",
+      "chooseRestrictedKey": "uuuu >< cant use dat key!!!",
+      "chooseNotTXT": "pwease use a txt file owo",
+      "chooseInvalidURL": "XD baka! dats not a url!!! ",
+      "chooseDuplicateKey": "ummmm >///< sowwy... that key alweady exists",
+      "chooseAddSuccess": "hihi meeku-chwan did it!!!",
+      "chooseDeleteSuccess": "meeku-chwan deweted da key!!! ^_^",
+      "chooseDeleteReject": "b-baka! u cant mess with other peoples stuff! >:3c",
+      "chooseKeyNotFound": "s-sowwy... dat key no exist >///<",
+      "yes": [
+        "umm... Hai!! ^_^",
+        "owo ... Hai!!!",
+        "hai!",
+        "meeku-chwan says yes!!!"
+      ],
+      "no": [
+        "no... >_>",
+        "dame!",
+        "nuh uh <_<",
+        "owo no way!!!",
+        "gross!!! XD no",
+        "uwu r u serious???"
+      ],
+      "decide": [
+        "meeku-chwans favourite is {choice}!! :3c",
+        "{choice} iz best ^_^",
+        "uwu u gotta go wif {choice}!! OwO",
+        "{choice}!!! >:3c",
+        "UwU do {choice}!!!! XD"
+      ]
+    }
   }
 }
