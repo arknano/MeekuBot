@@ -2,6 +2,8 @@ from discord.ext import commands
 import discord
 from datetime import datetime
 from functions.data import *
+from discord.ext.commands import CommandNotFound
+from functions.fun import *
 
 token = load_tokens()
 config = load_bot_config()
@@ -36,6 +38,14 @@ async def on_ready():
     await channel.send(loc['botOnline'])
     print("Ready! Started at " + datetime.now().strftime("%H:%M:%S"))
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, CommandNotFound):
+        if ctx.message.content.startswith("<"):
+            text = await type_nonsense(ctx)
+            await ctx.send(text)
+            return
+    raise error
 
 # slash = SlashCommand(bot, sync_commands=True)
 # guild_ids = [819745580309413919]  # Put your server ID in this array.

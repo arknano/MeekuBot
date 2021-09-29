@@ -2,9 +2,9 @@ import random
 from discord import User
 from discord.ext import commands
 import typing
-import markovify
 import sqlite3 as sql
 from functions.data import *
+from functions.fun import *
 
 
 class ChatLogCog(commands.Cog):
@@ -24,14 +24,6 @@ class ChatLogCog(commands.Cog):
                 );
             """)
             cursor.execute("SELECT * FROM chatlog")
-            data = cursor.fetchall()
-            markovlines = ""
-            line_count = 0
-            for row in data:
-                markovlines += "\n" + row[2] + ""
-                line_count += 1
-            print(f'Processed {line_count} lines in chat history.')
-            self.markov = markovify.NewlineText(markovlines, state_size=1)
 
     @commands.command(name="nocontext", brief="Random shit we've said")
     async def _nocontext(self, ctx, arg: typing.Optional[User]):
@@ -54,14 +46,15 @@ class ChatLogCog(commands.Cog):
 
     @commands.command(name="nonsense", brief="Attempt to generate semi-coherent sentence based on chat history")
     async def _nonsense(self, ctx):
-        await ctx.send(markov(self))
+        await ctx.send(markov())
 
     @commands.Cog.listener()
     async def on_message(self, message):
         r = random.random()
         if r < float(self.config['markovChance']):
             if message.author != self.bot.user:
-                await message.channel.send(markov(self))
+                text = await type_nonsense(message)
+                await message.channel.send(text)
         for prefix in self.config['prefixes']:
             if message.content.startswith(prefix): return
             if message.content.startswith("Shit ") and message.author == self.bot.user: return
@@ -75,9 +68,3 @@ class ChatLogCog(commands.Cog):
 
 def setup(bot):
     bot.add_cog(ChatLogCog(bot))
-
-
-def markov(self):
-    string = self.markov.make_sentence(min_words=self.config['minMarkovWords'], max_words=self.config['maxMarkovWords'],
-                                     max_overlap_ratio=self.config['markovOverlapRatio'], tries=100)
-    return string.capitalize()
