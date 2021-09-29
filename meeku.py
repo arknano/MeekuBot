@@ -45,7 +45,7 @@ async def on_command_error(ctx, error):
             text = await type_nonsense(ctx)
             await ctx.send(text)
             return
-    raise error
+    await ctx.send(loc['invalidCommand'])
 
 # slash = SlashCommand(bot, sync_commands=True)
 # guild_ids = [819745580309413919]  # Put your server ID in this array.

@@ -1,5 +1,6 @@
 {
   "base": {
+    "invalidCommand": "That command doesn't exist!",
     "botOnline": "Meeku's here!",
     "naughtySet": "Bad!",
     "naughtyRemoved": "Fine...",
@@ -53,6 +54,7 @@
     }
   },
   "shouting": {
+    "invalidCommand": "THAT COMMAND DOESN'T EXIST!",
     "botOnline": "MEEKU'S HERE!!!",
     "naughtySet": "BAD!!!",
     "naughtyRemoved": "FINE!!!",
@@ -106,6 +108,7 @@
     }
   },
   "teenagedweeb": {
+    "invalidCommand": "uuuu sowwy senpai dat command no existy!! v_v",
     "botOnline": "ohaiyou minna-chan!! meeku-chwans here!! ^^",
     "naughtySet": "owo n-naughty!!",
     "naughtyRemoved": "uwu ok fine..",
