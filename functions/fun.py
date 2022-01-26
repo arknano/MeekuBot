@@ -40,7 +40,7 @@ def sponge_mock(input_text):
 
 async def type_nonsense(ctx):
     text = markov()
-    async with ctx.typing():
+    async with ctx.channel.typing():
         await asyncio.sleep(len(text) * 0.05)
     return text
 
